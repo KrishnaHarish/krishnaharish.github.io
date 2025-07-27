@@ -202,9 +202,22 @@ function generateCompleteHTML(groupedMessages) {
     ).join('\n            ');
     
     const categoryButtons = Array.from(allCategories).map(category => {
-        const displayName = category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' & ');
+        const displayName = getDisplayName(category);
         return `<button class="category-button" onclick="filterByCategory('${category}')">${displayName}</button>`;
     }).join('\n            ');
+
+function getDisplayName(category) {
+    const displayNames = {
+        'art-culture': 'Art & Culture',
+        'photography': 'Photography', 
+        'blog-posts': 'Blog Posts',
+        'festivals': 'Festivals & Celebrations',
+        'philosophy': 'Philosophy & Spirituality',
+        'professional': 'Professional Communications',
+        'general': 'General'
+    };
+    return displayNames[category] || category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' & ');
+}
     
     const contentHTML = years.map(year => generateYearHTML(year, groupedMessages[year])).join('\n        ');
     
@@ -366,6 +379,17 @@ function generateCompleteHTML(groupedMessages) {
     
     <div class="toc">
         <h2>Navigation</h2>
+        <h3>Search Messages</h3>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search messages..." onkeyup="searchMessages()">
+            <div id="searchResults" class="search-results"></div>
+        </div>
+        
+        <div class="stats">
+            <strong>Chat Statistics:</strong> ${Object.values(groupedMessages).reduce((total, year) => total + Object.values(year).reduce((sum, msgs) => sum + msgs.length, 0), 0)} messages across ${years.length} years (${years[0]}-${years[years.length-1]}) | 
+            Categories: ${Array.from(allCategories).map(cat => getDisplayName(cat)).join(', ')}
+        </div>
+        
         <h3>Browse by Year</h3>
         <div class="year-nav">
             ${yearButtons}

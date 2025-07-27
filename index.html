@@ -156,6 +156,17 @@
     
     <div class="toc">
         <h2>Navigation</h2>
+        <h3>Search Messages</h3>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search messages..." onkeyup="searchMessages()">
+            <div id="searchResults" class="search-results"></div>
+        </div>
+        
+        <div class="stats">
+            <strong>Chat Statistics:</strong> 4529 messages across 9 years (2017-2025) | 
+            Categories: Art & Culture, Photography, Festivals & Celebrations, Professional Communications, General, Blog Posts, Philosophy & Spirituality
+        </div>
+        
         <h3>Browse by Year</h3>
         <div class="year-nav">
             <button class="year-button" onclick="filterByYear('2017')">2017</button>
@@ -172,13 +183,13 @@
         
         <h3>Browse by Category</h3>
         <div class="category-nav">
-            <button class="category-button" onclick="filterByCategory('art-culture')">Art & culture</button>
+            <button class="category-button" onclick="filterByCategory('art-culture')">Art & Culture</button>
             <button class="category-button" onclick="filterByCategory('photography')">Photography</button>
-            <button class="category-button" onclick="filterByCategory('festivals')">Festivals</button>
-            <button class="category-button" onclick="filterByCategory('professional')">Professional</button>
+            <button class="category-button" onclick="filterByCategory('festivals')">Festivals & Celebrations</button>
+            <button class="category-button" onclick="filterByCategory('professional')">Professional Communications</button>
             <button class="category-button" onclick="filterByCategory('general')">General</button>
-            <button class="category-button" onclick="filterByCategory('blog-posts')">Blog & posts</button>
-            <button class="category-button" onclick="filterByCategory('philosophy')">Philosophy</button>
+            <button class="category-button" onclick="filterByCategory('blog-posts')">Blog Posts</button>
+            <button class="category-button" onclick="filterByCategory('philosophy')">Philosophy & Spirituality</button>
             <button class="category-button" onclick="showAllCategories()">Show All</button>
         </div>
     </div>
